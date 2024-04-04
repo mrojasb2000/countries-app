@@ -8,6 +8,11 @@
 
 <div class="div row">
   <div class="div col">
-    Result table
+    <hr>
+    <ul>
+      <li *ngFor="let country of countries">
+        {{ country.capital }}
+      </li>
+    </ul>
   </div>
 </div>
