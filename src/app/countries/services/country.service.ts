@@ -30,6 +30,8 @@ export class CountryService {
     return this.searchByTerm(term, 'region');
   }
 
+
+
   private searchByTerm(term: string, objectType: string): Observable<Country[]> {
     const url = `${this.apiUrl}/${objectType}/${term}`;
     return this.http.get<Country[]>(url).pipe( catchError( error => of([]) ) )

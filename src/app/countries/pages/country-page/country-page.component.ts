@@ -12,6 +12,32 @@ import { Country } from '../../interfaces/country.interfaces';
 export class CountryPageComponent implements OnInit{
 
   public country?: Country;
+  private _tranlateCodes:string[] = [
+    'ara',
+    'bre',
+    'ces',
+    'cym',
+    'deu',
+    'est',
+    'fin',
+    'fra',
+    'hrv',
+    'hun',
+    'jpn',
+    'kor',
+    'nld',
+    'per',
+    'pol',
+    'por',
+    'rus',
+    'slk',
+    'spa',
+    'srp',
+    'swe',
+    'tur',
+    'urd',
+    'zho',
+  ];
 
   constructor(
     private activateRouter: ActivatedRoute,
@@ -26,7 +52,10 @@ export class CountryPageComponent implements OnInit{
         return this.router.navigateByUrl('');
       }
       return this.country = country;
-      // return;
     } );
+  }
+
+  get translateCodes(){
+    return [...this._tranlateCodes];
   }
 }
