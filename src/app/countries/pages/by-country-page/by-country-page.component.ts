@@ -9,7 +9,7 @@ import { Country } from '../../interfaces/country.interfaces';
 })
 export class ByCountryPageComponent {
   private _countries: Country[] = [];
-
+  public isLoading: boolean = false;
   constructor(private countryService: CountryService) { }
 
   get countries(): Country[] {
@@ -17,7 +17,12 @@ export class ByCountryPageComponent {
   }
 
   searchByCountry(term: string): void {
+    this.isLoading = true;
     console.log({term});
-    this.countryService.searchByCountry(term).subscribe(countries => this._countries = countries);
+    this.countryService.searchByCountry(term)
+      .subscribe(countries => {
+        this.isLoading = false;
+        this._countries = countries
+      });
   }
 }
