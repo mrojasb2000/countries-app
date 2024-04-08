@@ -1,8 +1,10 @@
 <h2>by region</h2>
 <hr>
-<div class="div row">
-  <div class="div col">
-    <shared-search-box (onDebounce)="searchByRegion($event)" placeholder="Search by country"></shared-search-box>
+<div class="row">
+  <div class="col text-center">
+    <button *ngFor="let region of regions" class="btn mt-2" (click)="searchByRegion(region)">
+      {{ region }}
+    </button>
   </div>
 </div>
 
