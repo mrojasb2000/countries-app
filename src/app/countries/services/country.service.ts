@@ -32,7 +32,7 @@ export class CountryService {
 
   private getCountriesRequest(term: string, objectType: string): Observable<Country[]> {
     const url = `${this.apiUrl}/${objectType}/${term}`;
-    return this.http.get<Country[]>(url).pipe( catchError( error => of([]) ), delay(500), )
+    return this.http.get<Country[]>(url).pipe( catchError( error => of([]) ), delay(200), )
   }
 
 }
