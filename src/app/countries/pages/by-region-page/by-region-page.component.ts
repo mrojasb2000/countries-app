@@ -14,7 +14,8 @@ export class ByRegionPageComponent {
   private _countries: Country[] = [];
   private countrySubscription?: Subscription;
   public isLoading: boolean = false;
-  public regions: Region[] = ['Africa','America','Asia','Europe','Oceania']
+  public regions: Region[] = ['Africa','America','Asia','Europe','Oceania'];
+  public selectedRegion?: Region;
 
   constructor(private countryService: CountryService) { }
 
@@ -26,9 +27,10 @@ export class ByRegionPageComponent {
     this.countrySubscription?.unsubscribe();
   }
 
-  searchByRegion(term: string): void {
+  searchByRegion(region: Region): void {
     this.isLoading = true;
-    this.countrySubscription = this.countryService.searchByRegion(term).subscribe(countries => {
+    this.selectedRegion = region;
+    this.countrySubscription = this.countryService.searchByRegion(region).subscribe(countries => {
       this.isLoading = false;
       this._countries = countries
     });

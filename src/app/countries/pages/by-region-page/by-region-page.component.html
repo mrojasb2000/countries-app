@@ -2,7 +2,7 @@
 <hr>
 <div class="row">
   <div class="col text-center">
-    <button *ngFor="let region of regions" class="btn mt-2" (click)="searchByRegion(region)">
+    <button *ngFor="let region of regions" class="btn mt-2" [ngClass]="{ 'btn-outline-primary': selectedRegion === region }" (click)="searchByRegion(region)">
       {{ region }}
     </button>
   </div>
