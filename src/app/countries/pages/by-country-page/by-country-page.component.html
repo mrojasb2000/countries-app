@@ -2,7 +2,11 @@
 <hr>
 <div class="div row">
   <div class="div col">
-    <shared-search-box (onDebounce)="searchByCountry($event)" placeholder="Search by country"></shared-search-box>
+    <shared-search-box
+      [initialValue]="initialValue"
+      (onDebounce)="searchByCountry($event)"
+      placeholder="Search by country">
+    </shared-search-box>
   </div>
 </div>
 

@@ -17,13 +17,13 @@ export class ByCapitalPageComponent implements OnInit{
 
   constructor(private countryService: CountryService) { }
 
+  get countries(): Country[] {
+    return [...this._countries];
+  }
+
   ngOnInit(): void {
     this._countries = this.countryService.cacheStore.byCapital.countries;
     this.initialValue = this.countryService.cacheStore.byCapital.term;
-  }
-
-  get countries(): Country[] {
-    return [...this._countries];
   }
 
   ngOnDestroy(): void {
