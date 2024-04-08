@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CountryService } from '../../services/country.service';
 import { Country } from '../../interfaces/country.interfaces';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-by-country-page',
@@ -9,6 +10,7 @@ import { Country } from '../../interfaces/country.interfaces';
 })
 export class ByCountryPageComponent {
   private _countries: Country[] = [];
+  private countrySubscription?: Subscription;
   public isLoading: boolean = false;
   constructor(private countryService: CountryService) { }
 
@@ -16,10 +18,14 @@ export class ByCountryPageComponent {
     return [...this._countries];
   }
 
+  ngOnDestroy(): void {
+    this.countrySubscription?.unsubscribe();
+  }
+
   searchByCountry(term: string): void {
     this.isLoading = true;
     console.log({term});
-    this.countryService.searchByCountry(term)
+    this.countrySubscription = this.countryService.searchByCountry(term)
       .subscribe(countries => {
         this.isLoading = false;
         this._countries = countries
