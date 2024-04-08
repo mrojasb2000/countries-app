@@ -7,6 +7,7 @@
     <thead>
       <tr>
         <th>#</th>
+        <th>Icon</th>
         <th>Flag</th>
         <th>Country</th>
         <th>Name</th>
@@ -18,6 +19,9 @@
       <tr *ngFor="let country of countries; let i = index">
         <td>{{ i + 1 }}</td>
         <td>{{ country.flag }}</td>
+        <td>
+          <img [src]="country.flags.svg" [alt]="country.name.common" class="flag img-thumbnail">
+        </td>
         <td>{{ country.name.common }}</td>
         <td>{{ country.capital }}</td>
         <td class="population">{{ country.population | number }}</td>
