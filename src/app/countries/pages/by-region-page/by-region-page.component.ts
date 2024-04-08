@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Country } from '../../interfaces/country.interfaces';
 import { CountryService } from '../../services/country.service';
 import { Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { Region } from '../../interfaces/region.type';
   templateUrl: './by-region-page.component.html',
   styleUrl: './by-region-page.component.css'
 })
-export class ByRegionPageComponent {
+export class ByRegionPageComponent implements OnInit {
   private _countries: Country[] = [];
   private countrySubscription?: Subscription;
   public isLoading: boolean = false;
@@ -20,6 +20,11 @@ export class ByRegionPageComponent {
 
   get countries(): Country[] {
     return [...this._countries];
+  }
+
+  ngOnInit(): void {
+    this._countries = this.countryService.cacheStore.byRegion.countries;
+    this.selectedRegion = this.countryService.cacheStore.byRegion.region;
   }
 
   ngOnDestroy(): void {
