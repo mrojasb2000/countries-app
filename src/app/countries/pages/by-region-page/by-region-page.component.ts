@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { Country } from '../../interfaces/country.interfaces';
 import { CountryService } from '../../services/country.service';
 import { Subscription } from 'rxjs';
-
-type Region = 'Africa'|'America'|'Asia'|'Europe'|'Oceania'
+import { Region } from '../../interfaces/region.type';
 
 @Component({
   selector: 'app-by-region-page',
